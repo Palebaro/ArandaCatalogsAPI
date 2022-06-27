@@ -70,6 +70,7 @@
     <Compile Include="ModelsDomain\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CategoysService.cs" />
+    <Compile Include="ModelsDomain\FilterProducts.cs" />
     <Compile Include="Services\ICategorysService.cs" />
     <Compile Include="Services\IProductsService.cs" />
     <Compile Include="Services\ProductsService.cs" />

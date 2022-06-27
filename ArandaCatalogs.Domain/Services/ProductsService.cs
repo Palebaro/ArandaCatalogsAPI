@@ -16,5 +16,15 @@ namespace ArandaCatalogs.Domain.Services
         {
             ProductsRepository = productsRepository;
         }
+
+        public void AddNewProduct(ProductModel request)
+        {
+            ProductsRepository.AddNewProduct(request);
+        }
+
+        public IEnumerable<ProductModel> GetProducts(FilterProducts filters)
+        {
+            return ProductsRepository.GetProducts(filters);
+        }
     }
 }

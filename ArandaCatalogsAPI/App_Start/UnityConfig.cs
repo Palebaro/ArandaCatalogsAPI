@@ -1,4 +1,5 @@
 using ArandaCatalogs.Domain.Interfaces;
+using ArandaCatalogs.Domain.ModelsDomain;
 using ArandaCatalogs.Domain.Services;
 using ArandaCatalogs.Infrastructure.Repositories;
 using System.Web.Http;
@@ -13,14 +14,10 @@ namespace ArandaCatalogsAPI
         {
 			var container = new UnityContainer();
 
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
-
-            // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<ICategoryRepository, CategorysRepository>();
             container.RegisterType<ICategorysService, CategoysService>();
-            //container.RegisterType<ICategorysService, CategoysService>();
-            //container.RegisterType<ICategorysService, CategoysService>();
+            container.RegisterType<IProductsRepository, ProductsRepository>();
+            container.RegisterType<IProductsService, ProductsService>();
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
     }

@@ -1,18 +1,15 @@
-﻿using System;
+﻿using ArandaCatalogs.Domain.ModelsDomain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArandaCatalogs.Domain.Services
+namespace ArandaCatalogs.Domain.ModelsDomain
 {
     public interface IProductsService
     {
-        //ICategoryRepository CategoryRepository;
-
-        //public CategoysService(ICategoryRepository categoryRepository)
-        //{
-        //    CategoryRepository = categoryRepository;
-        //}
+        void AddNewProduct(ProductModel request);
+        IEnumerable<ProductModel> GetProducts(FilterProducts filters);
     }
 }

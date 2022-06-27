@@ -42,7 +42,11 @@ namespace ArandaCatalogsAPI.Controllers
             CategorysService.AddNewCategory(request);
             return Task.CompletedTask;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("Api/DeleteCategory/{id}")]
         [HttpDelete]
         public Task DeleteCategory(Guid id)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ArandaCatalogs.Domain.Services
 {
-    public class CategoysService :ICategorysService
+    public class CategoysService : ICategorysService
     {
         ICategoryRepository CategoryRepository;
 

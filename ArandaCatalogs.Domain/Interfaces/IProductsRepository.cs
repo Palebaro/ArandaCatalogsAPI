@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArandaCatalogs.Domain.ModelsDomain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace ArandaCatalogs.Domain.Interfaces
 {
     public interface IProductsRepository
     {
+        Task AddNewProduct(ProductModel request);
+        IEnumerable<ProductModel> GetProducts(FilterProducts filters);
     }
 }
