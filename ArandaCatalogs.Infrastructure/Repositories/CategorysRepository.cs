@@ -21,31 +21,52 @@ namespace ArandaCatalogs.Infrastructure.Repositories
         }
         public IEnumerable<CategoryModel> GetCategorys()
         {
-            var result = DbContext.Category.Select(c => new CategoryModel
+            try
             {
-                Id = c.Id,
-                CategoryName = c.Category_Name
-            });
-            return result;
+                var result = DbContext.Category.Select(c => new CategoryModel
+                {
+                    Id = c.Id,
+                    CategoryName = c.Category_Name
+                });
+                return result;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Task AddNewCategory(string request)
         {
-            DbContext.Category.Add(new Category
+            try
             {
-                Id = Guid.NewGuid(),
-                Category_Name = request
-            });
-            DbContext.SaveChanges();
-            return Task.CompletedTask;
+                DbContext.Category.Add(new Category
+                {
+                    Id = Guid.NewGuid(),
+                    Category_Name = request
+                });
+                DbContext.SaveChanges();
+                return Task.CompletedTask;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public Task DeleteCategory(Guid id)
         {
-            var category = DbContext.Category.Single(c => c.Id == id);
-            DbContext.Category.Remove(category);
-            DbContext.SaveChanges();
-            return Task.CompletedTask;
+            try
+            {
+                var category = DbContext.Category.Single(c => c.Id == id);
+                DbContext.Category.Remove(category);
+                DbContext.SaveChanges();
+                return Task.CompletedTask;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

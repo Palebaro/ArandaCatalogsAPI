@@ -11,5 +11,7 @@ namespace ArandaCatalogs.Domain.Interfaces
     {
         Task AddNewProduct(ProductModel request);
         IEnumerable<ProductModel> GetProducts(FilterProducts filters);
+        Task DeleteProduct(Guid id);
+        Task UpdateProduct(ProductModel request);
     }
 }

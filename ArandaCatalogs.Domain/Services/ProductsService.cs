@@ -22,9 +22,19 @@ namespace ArandaCatalogs.Domain.Services
             ProductsRepository.AddNewProduct(request);
         }
 
+        public void UpdateProduct(ProductModel request)
+        {
+            ProductsRepository.UpdateProduct(request);
+        }
+
         public IEnumerable<ProductModel> GetProducts(FilterProducts filters)
         {
             return ProductsRepository.GetProducts(filters);
+        }
+
+        public void DeleteProduct(Guid id)
+        {
+            ProductsRepository.DeleteProduct(id);
         }
     }
 }

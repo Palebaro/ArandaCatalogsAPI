@@ -13,7 +13,6 @@ namespace ArandaCatalogs.Infrastructure.Models
         [Column(Order = 0)]
         public Guid Id { get; set; }
 
-        [Key]
         [Column(Order = 1)]
         [StringLength(50)]
         public string Name { get; set; }
@@ -21,7 +20,6 @@ namespace ArandaCatalogs.Infrastructure.Models
         [StringLength(20)]
         public string Description { get; set; }
 
-        [Key]
         [Column(Order = 2)]
         public Guid Category_Id { get; set; }
 

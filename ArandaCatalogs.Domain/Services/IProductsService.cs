@@ -11,5 +11,7 @@ namespace ArandaCatalogs.Domain.ModelsDomain
     {
         void AddNewProduct(ProductModel request);
         IEnumerable<ProductModel> GetProducts(FilterProducts filters);
+        void DeleteProduct(Guid id);
+        void UpdateProduct(ProductModel request);
     }
 }

@@ -1,12 +1,9 @@
 ﻿using ArandaCatalogs.Domain.ModelsDomain;
-using ArandaCatalogs.Domain.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ArandaCatalogsAPI.Controllers
 {
@@ -24,14 +21,14 @@ namespace ArandaCatalogsAPI.Controllers
         /// </summary>
         /// <param name="filters"></param>
         /// <returns></returns>
-        [Route("Api/GetProducts")]
+        [Route("Api/Products/GetProducts")]
         [HttpPost]
         public IEnumerable<ProductModel> GetProducts([FromBody] FilterProducts filters)
         {
             return ProductsService.GetProducts(filters);
         }
 
-        [Route("Api/AddNewProduct")]
+        [Route("Api/Products/AddNewProduct")]
         [HttpPut]
         public Task AddNewProduct(ProductModel request)
         {
@@ -39,9 +36,21 @@ namespace ArandaCatalogsAPI.Controllers
             return Task.CompletedTask;
         }
 
-        // DELETE: api/Products/5
-        public void Delete(int id)
+        [Route("Api/Products/UpdateProduct")]
+        [HttpPost]
+        public Task UpdateProduct(ProductModel request)
         {
+            ProductsService.UpdateProduct(request);
+            return Task.CompletedTask;
+        }
+
+        // DELETE: api/Products/5
+        [Route("Api/Products/Delete/{id}")]
+        [HttpPost]
+        public Task Delete(Guid id)
+        {
+            ProductsService.DeleteProduct(id);
+            return Task.CompletedTask;
         }
     }
 }
