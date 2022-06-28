@@ -1,0 +1,8 @@
+----Intrucciones
+
+----Modificar en el archivo Web.config la cadena de conexión "connectionString".
+    Ejemplo:
+      <connectionStrings>
+        <add name="ArandaCatalogsDB" connectionString="Server=PMVM007\SQLEXPRESS;Database=ArandaCatalogs;integrated security=True;MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
+      </connectionStrings>
+  
