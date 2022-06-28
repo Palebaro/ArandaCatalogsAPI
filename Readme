@@ -5,4 +5,7 @@
       <connectionStrings>
         <add name="ArandaCatalogsDB" connectionString="Server=PMVM007\SQLEXPRESS;Database=ArandaCatalogs;integrated security=True;MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
       </connectionStrings>
-  
+----Modficar CORS en ArandaCatalogsAPI\App_Start\WebApiConfig.cs
+      Reemplazar por el localhost generado en su compilacion del frontend(Si es necesario)
+      Ejemplo:
+        var cors = new EnableCorsAttribute(origins: "http://localhost:4200", headers: "*", methods: "*");
