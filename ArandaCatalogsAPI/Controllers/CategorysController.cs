@@ -21,7 +21,7 @@ namespace ArandaCatalogsAPI.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Gets registered categories
         /// </summary>
         /// <returns></returns>
         [Route("Api/GetCategorys")]
@@ -31,7 +31,7 @@ namespace ArandaCatalogsAPI.Controllers
             return CategorysService.GetCategorys();
         }
         /// <summary>
-        /// 
+        /// Add new categories
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace ArandaCatalogsAPI.Controllers
             return Task.CompletedTask;
         }
         /// <summary>
-        /// 
+        /// Remove categories
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

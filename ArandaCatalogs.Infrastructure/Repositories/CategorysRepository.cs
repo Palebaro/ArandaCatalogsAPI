@@ -19,15 +19,21 @@ namespace ArandaCatalogs.Infrastructure.Repositories
         {
             DbContext = dbContext;
         }
+        /// <summary>
+        /// Gets registered categories
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<CategoryModel> GetCategorys()
         {
             try
             {
-                var result = DbContext.Category.Select(c => new CategoryModel
-                {
-                    Id = c.Id,
-                    CategoryName = c.Category_Name
-                });
+                var result = (from c in DbContext.Category
+                              select new CategoryModel
+                              {
+                                  Id = c.Id,
+                                  CategoryName = c.Category_Name
+                              }).ToList();
+
                 return result;
             }
             catch (Exception e)

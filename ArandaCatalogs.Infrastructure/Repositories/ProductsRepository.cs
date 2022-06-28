@@ -20,7 +20,7 @@ namespace ArandaCatalogs.Infrastructure.Repositories
             DbContext = dbContext;
         }
         /// <summary>
-        /// 
+        /// Gets products registered by search filters
         /// </summary>
         /// <param name="filters"></param>
         /// <returns></returns>
@@ -28,21 +28,23 @@ namespace ArandaCatalogs.Infrastructure.Repositories
         {
             try
             {
-                var result = (from c in DbContext.Products
-                              where c.Name == filters.Name
-                              || c.Description == filters.Description
-                              || c.Category_Id == filters.CategoryId
+                var result = (from p in DbContext.Products
+                              join c in DbContext.Category on p.Category_Id equals c.Id
+                              where  p.Name == filters.Name
+                                     || p.Description == filters.Description
+                                     || p.Category_Id == filters.CategoryId
                               select new ProductModel
                               {
-                                  Id = c.Id,
-                                  Name = c.Name,
-                                  Description = c.Description,
-                                  Category_Id = c.Category_Id,
-                                  Image = c.Image
+                                  Id = p.Id,
+                                  Name = p.Name,
+                                  Description = p.Description,
+                                  CategoryId = p.Category_Id,
+                                  Image = p.Image,
+                                  CategoryName = c.Category_Name
                               })
                               .OrderBy(x => x.Name)
-                             .Take(100000)
-                             .ToList();
+                              .Take(100000)
+                              .ToList();
              return result;
             }
             catch (Exception e)
@@ -51,7 +53,7 @@ namespace ArandaCatalogs.Infrastructure.Repositories
             }
         }
         /// <summary>
-        /// 
+        ///  Add new products
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -64,7 +66,7 @@ namespace ArandaCatalogs.Infrastructure.Repositories
                     Id = Guid.NewGuid(),
                     Name = request.Name,
                     Description = request.Description,
-                    Category_Id = request.Category_Id,
+                    Category_Id = request.CategoryId,
                     Image = request.Image
                 });
                 DbContext.SaveChanges();
@@ -76,6 +78,11 @@ namespace ArandaCatalogs.Infrastructure.Repositories
             }
 
         }
+        /// <summary>
+        /// Updates registered products
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public Task UpdateProduct(ProductModel request)
         {
             try
@@ -84,7 +91,7 @@ namespace ArandaCatalogs.Infrastructure.Repositories
 
                 result.Name = request.Name;
                 result.Description = request.Description;
-                result.Category_Id = request.Category_Id;
+                result.Category_Id = request.CategoryId;
                 result.Image = request.Image;
 
                 DbContext.Entry(result).State = EntityState.Modified;
@@ -96,6 +103,11 @@ namespace ArandaCatalogs.Infrastructure.Repositories
                 throw e;
             }
         }
+        /// <summary>
+        /// Remove products
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Task DeleteProduct(Guid id)
         {
             try

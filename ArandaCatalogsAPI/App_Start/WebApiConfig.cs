@@ -14,7 +14,7 @@ namespace ArandaCatalogsAPI
 
             // Rutas de Web API
             config.MapHttpAttributeRoutes();
-            var cors = new EnableCorsAttribute(origins: "http://localhost:3000", headers: "*", methods: "*");
+            var cors = new EnableCorsAttribute(origins: "http://localhost:4200", headers: "*", methods: "*");
             config.EnableCors(cors) ;
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

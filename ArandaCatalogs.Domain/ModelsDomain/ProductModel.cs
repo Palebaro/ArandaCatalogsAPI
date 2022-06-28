@@ -10,7 +10,8 @@ namespace ArandaCatalogs.Domain.ModelsDomain
 
         public string Description { get; set; }
 
-        public Guid Category_Id { get; set; }
+        public Guid CategoryId { get; set; }
+        public string CategoryName { get; set; }
 
         public byte[] Image { get; set; }
     }

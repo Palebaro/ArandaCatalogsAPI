@@ -16,22 +16,35 @@ namespace ArandaCatalogs.Domain.Services
         {
             ProductsRepository = productsRepository;
         }
-
+        /// <summary>
+        ///  Add new products
+        /// </summary>
+        /// <param name="request"></param>
         public void AddNewProduct(ProductModel request)
         {
             ProductsRepository.AddNewProduct(request);
         }
-
+        /// <summary>
+        /// Updates registered products
+        /// </summary>
+        /// <param name="request"></param>
         public void UpdateProduct(ProductModel request)
         {
             ProductsRepository.UpdateProduct(request);
         }
-
+        /// <summary>
+        /// Gets products registered by search filters
+        /// </summary>
+        /// <param name="filters"></param>
+        /// <returns></returns>
         public IEnumerable<ProductModel> GetProducts(FilterProducts filters)
         {
             return ProductsRepository.GetProducts(filters);
         }
-
+        /// <summary>
+        /// Remove products
+        /// </summary>
+        /// <param name="id"></param>
         public void DeleteProduct(Guid id)
         {
             ProductsRepository.DeleteProduct(id);

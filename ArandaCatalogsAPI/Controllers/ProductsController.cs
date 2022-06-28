@@ -27,7 +27,11 @@ namespace ArandaCatalogsAPI.Controllers
         {
             return ProductsService.GetProducts(filters);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [Route("Api/Products/AddNewProduct")]
         [HttpPut]
         public Task AddNewProduct(ProductModel request)
@@ -35,18 +39,25 @@ namespace ArandaCatalogsAPI.Controllers
             ProductsService.AddNewProduct(request);
             return Task.CompletedTask;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [Route("Api/Products/UpdateProduct")]
-        [HttpPost]
+        [HttpPut]
         public Task UpdateProduct(ProductModel request)
         {
             ProductsService.UpdateProduct(request);
             return Task.CompletedTask;
         }
-
-        // DELETE: api/Products/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Route("Api/Products/Delete/{id}")]
-        [HttpPost]
+        [HttpDelete]
         public Task Delete(Guid id)
         {
             ProductsService.DeleteProduct(id);
